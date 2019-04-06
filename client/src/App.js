@@ -12,6 +12,7 @@ class App extends Component {
   logoutHandler = event => {
     event.preventDefault()
     localStorage.removeItem("jwt")
+    localStorage.removeItem("username")
     this.props.history.push("/login")
   }
 

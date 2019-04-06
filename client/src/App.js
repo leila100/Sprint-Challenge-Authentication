@@ -6,7 +6,7 @@ import Register from "./components/Register"
 import Login from "./components/Login"
 import Jokes from "./components/Jokes"
 
-import { NavbarWrapper } from "./styles/navbarStyles"
+import { NavbarWrapper, NavIcon } from "./styles/navbarStyles"
 
 class App extends Component {
   logoutHandler = event => {
@@ -20,6 +20,9 @@ class App extends Component {
       <div className='App'>
         <header className='App-header'>
           <NavbarWrapper>
+            <NavIcon>
+              <i className='far fa-grin-squint' />
+            </NavIcon>
             {localStorage.getItem("jwt") ? (
               <>
                 <button onClick={this.logoutHandler}>Logout</button>

@@ -31,3 +31,12 @@ export const NavbarWrapper = styled(Flex)`
     cursor: pointer;
   }
 `
+
+export const NavIcon = styled.div`
+  width: 15%;
+
+  i {
+    color: white;
+    font-size: 2.7rem;
+  }
+`

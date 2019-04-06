@@ -1,11 +1,11 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
 import axios from "axios"
+import { Link } from "react-router-dom"
 
 import { Message } from "../styles/messageStyles"
 import { FormWrapper, FormGroup, Button, Footer } from "../styles/formStyles"
 
-class Register extends Component {
+class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -19,10 +19,11 @@ class Register extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  registerHandler = event => {
+  loginHandler = event => {
     event.preventDefault()
     const { username, password } = this.state
-    const endpoint = "http://localhost:8080/api/register"
+    const endpoint = "http://localhost:8080/api/login"
+
     axios
       .post(endpoint, {
         username,
@@ -43,7 +44,7 @@ class Register extends Component {
     return (
       <FormWrapper>
         <Message error>{this.state.message}</Message>
-        <form onSubmit={this.registerHandler}>
+        <form onSubmit={this.loginHandler}>
           <FormGroup>
             <i className='fas fa-user' />
             <input
@@ -68,10 +69,10 @@ class Register extends Component {
           </FormGroup>
 
           <Button type='submit'>
-            <i className='fas fa-user-plus' /> Register
+            <i className='fas fa-sign-in-alt' /> Login
           </Button>
           <Footer>
-            Already registered: <Link to='/login'>Login</Link>
+            Have to register? <Link to='/Register'>Register</Link>
           </Footer>
         </form>
       </FormWrapper>
@@ -79,4 +80,4 @@ class Register extends Component {
   }
 }
 
-export default Register
+export default Login

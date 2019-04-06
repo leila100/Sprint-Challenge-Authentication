@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import { Route, Switch, NavLink } from "react-router-dom"
 
 import Register from "./components/Register"
+import Login from "./components/Login"
 
 import { NavbarWrapper } from "./styles/navbarStyles"
 
@@ -19,7 +20,7 @@ class App extends Component {
         </header>
         <main>
           <Switch>
-            {/* <Route path="/login" component={} /> */}
+            <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
             {/* <Route path="/jokes" component={} /> */}
             {/* <Redirect exact from='/' to='/jokes' /> */}

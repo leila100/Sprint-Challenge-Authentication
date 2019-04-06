@@ -31,7 +31,7 @@ function register(req, res) {
     // Add user to database and send back response, with token info
     Users.add(user)
       .then(userId => {
-        res.status(201).json({ userId: userId, token: token })
+        res.status(201).json({ userId: userId, token: token, username })
       })
       .catch(error => {
         console.log(error)
@@ -56,7 +56,9 @@ function login(req, res) {
         // Check that user exists and password is same as in database
         if (user && bcrypt.compareSync(password, user.password)) {
           const token = generateToken(user) // Create token because user is valid
-          res.status(200).json({ message: `Welcome ${user.username}!`, token }) // Send token to client
+          res
+            .status(200)
+            .json({ message: `Welcome ${user.username}!`, token, username }) // Send token to client
         } else {
           res.status(400).json({ errorMessage: "Invalid Credentials" })
         }

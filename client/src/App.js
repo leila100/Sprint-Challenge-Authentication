@@ -16,6 +16,8 @@ class App extends Component {
   }
 
   render() {
+    const token = localStorage.getItem("jwt")
+    const username = localStorage.getItem("username")
     return (
       <div className='App'>
         <header className='App-header'>
@@ -23,8 +25,9 @@ class App extends Component {
             <NavIcon>
               <i className='far fa-grin-squint' />
             </NavIcon>
-            {localStorage.getItem("jwt") ? (
+            {token ? (
               <>
+                <p>Welcome {username}</p>
                 <button onClick={this.logoutHandler}>Logout</button>
                 <NavLink to='/jokes'>Jokes</NavLink>
               </>

@@ -30,6 +30,10 @@ export const NavbarWrapper = styled(Flex)`
     font-size: 1.7rem;
     cursor: pointer;
   }
+
+  p {
+    color: white;
+  }
 `
 
 export const NavIcon = styled.div`

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-
+import { withRouter } from "react-router-dom"
 import { Route, Switch, Redirect, NavLink } from "react-router-dom"
 
 import Register from "./components/Register"
@@ -9,14 +9,28 @@ import Jokes from "./components/Jokes"
 import { NavbarWrapper } from "./styles/navbarStyles"
 
 class App extends Component {
+  logoutHandler = event => {
+    event.preventDefault()
+    localStorage.removeItem("jwt")
+    this.props.history.push("/login")
+  }
+
   render() {
     return (
       <div className='App'>
         <header className='App-header'>
           <NavbarWrapper>
-            <NavLink to='/login'>Login</NavLink>
-            <NavLink to='/register'>Register</NavLink>
-            <NavLink to='/jokes'>Jokes</NavLink>
+            {localStorage.getItem("jwt") ? (
+              <>
+                <button onClick={this.logoutHandler}>Logout</button>
+                <NavLink to='/jokes'>Jokes</NavLink>
+              </>
+            ) : (
+              <>
+                <NavLink to='/login'>Login</NavLink>
+                <NavLink to='/register'>Register</NavLink>
+              </>
+            )}
           </NavbarWrapper>
         </header>
         <main>
@@ -32,4 +46,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withRouter(App)
